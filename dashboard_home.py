@@ -14,7 +14,7 @@ class DashboardHome(QtWidgets.QWidget):
         layout.setContentsMargins(30, 30, 30, 30)
         layout.setSpacing(24)
 
-        # Welcome
+        # message de bienvenue
         welcome = QtWidgets.QLabel(f"Bonjour, {self.current_user.get('prenom','')} {self.current_user.get('nom','')} 👋")
         welcome.setStyleSheet("font-size:22px;font-weight:700;color:#1a1f2e;")
         layout.addWidget(welcome)
@@ -23,19 +23,16 @@ class DashboardHome(QtWidgets.QWidget):
         sub.setStyleSheet("color:#6e7781;font-size:13px;margin-top:-16px;")
         layout.addWidget(sub)
 
-        # Stats cards
         self.stats_layout = QtWidgets.QHBoxLayout()
         self.stats_layout.setSpacing(16)
         layout.addLayout(self.stats_layout)
 
-        # Recent tickets
         layout.addWidget(section_title("📋 Derniers tickets vendus"))
         from styles import make_table
         self.recent_table = make_table(["#", "Client", "Trajet", "Montant", "Date", "Statut"])
         self.recent_table.setMaximumHeight(260)
         layout.addWidget(self.recent_table)
 
-        # Upcoming trips
         layout.addWidget(section_title("🗓️ Prochains trajets"))
         self.upcoming_table = make_table(["Départ", "Arrivée", "H. Départ", "H. Arrivée", "Chauffeur", "Véhicule"])
         self.upcoming_table.setMaximumHeight(200)

@@ -24,33 +24,24 @@ class Dashboard(QtWidgets.QMainWindow):
         # ── Sidebar ──
         sidebar = QtWidgets.QFrame()
         sidebar.setFixedWidth(230)
-        # sidebar.setStyleSheet("""
-        #     QFrame {
-        #         background-color: #ffffff;
-               
-        #     }
-        # """)
+        
         side_layout = QtWidgets.QVBoxLayout(sidebar)
         side_layout.setContentsMargins(0, 0, 0, 0)
         side_layout.setSpacing(0)
 
-        # Logo area
+        # pour l'affichage du 'logo' de GestTransport
         logo_area = QtWidgets.QWidget()
-        # logo_area.setStyleSheet("background:#010409;border-bottom:1px solid #d0d7de;")
         logo_layout = QtWidgets.QVBoxLayout(logo_area)
         logo_layout.setContentsMargins(20, 20, 20, 20)
         logo_icon = QtWidgets.QLabel("🚌 GestTransport")
         logo_icon.setStyleSheet("font-size:15px;")
-        # logo_text = QtWidgets.QLabel("")
-        # logo_text.setStyleSheet("font-size:16px;font-weight:700;color:#82a2f5;margin-top:4px;")
         logo_sub = QtWidgets.QLabel(f"@{self.current_user.get('identifiant','')}")
         logo_sub.setStyleSheet("font-size:11px;color:#484f58;")
         logo_layout.addWidget(logo_icon)
-        # logo_layout.addWidget(logo_text)
         logo_layout.addWidget(logo_sub)
         side_layout.addWidget(logo_area)
 
-        # Nav buttons
+        # pour les boutons de navigation au niveau du sidebar
         nav_scroll = QtWidgets.QScrollArea()
         nav_scroll.setWidgetResizable(True)
         nav_scroll.setStyleSheet("QScrollArea{border:none;background:transparent;}")
@@ -81,7 +72,7 @@ class Dashboard(QtWidgets.QMainWindow):
         nav_scroll.setWidget(nav_widget)
         side_layout.addWidget(nav_scroll)
 
-        # User info + logout at bottom
+        # ici je veux afficher les infos de l'user avec un bouton se deconnecter
         bottom = QtWidgets.QWidget()
         bottom.setStyleSheet("background:#f5f5f5;border-top:1px solid #d0d7de;padding:4px;")
         bottom_layout = QtWidgets.QVBoxLayout(bottom)
@@ -109,15 +100,12 @@ class Dashboard(QtWidgets.QMainWindow):
 
         main_layout.addWidget(sidebar)
 
-        # ── Content area ──
         self.stack = QtWidgets.QStackedWidget()
         self.stack.setStyleSheet("background-color:#f5f7fa;")
         main_layout.addWidget(self.stack)
 
-        # Load pages
         self._load_pages()
 
-        # Default page
         self._switch_page("home")
 
     def _make_nav_btn(self, icon, label, key):
@@ -169,15 +157,12 @@ class Dashboard(QtWidgets.QMainWindow):
             scroll = QtWidgets.QScrollArea()
             scroll.setWidgetResizable(True)
             scroll.setWidget(page)
-            # scroll.setStyleSheet("QScrollArea{border:none;background:#0d1117;}")
             self.stack.addWidget(scroll)
             self._pages[key] = (page, scroll)
 
     def _switch_page(self, key):
-        # Deactivate previous
         if self._active_btn:
             self._active_btn.setChecked(False)
-        # Activate new
         btn = self._nav_buttons.get(key)
         if btn:
             btn.setChecked(True)
@@ -185,7 +170,6 @@ class Dashboard(QtWidgets.QMainWindow):
         if key in self._pages:
             _, scroll = self._pages[key]
             self.stack.setCurrentWidget(scroll)
-            # Refresh dashboard stats when returning
             if key == "home":
                 self._pages["home"][0].refresh()
 

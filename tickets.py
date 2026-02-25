@@ -23,7 +23,6 @@ class TicketsPage(QtWidgets.QWidget):
         hdr.addWidget(btn_add)
         layout.addLayout(hdr)
 
-        # Filters
         flt = QtWidgets.QHBoxLayout()
         self.search_input = QtWidgets.QLineEdit()
         self.search_input.setPlaceholderText("🔍 Rechercher par client, trajet...")
@@ -193,7 +192,7 @@ class TicketFormDialog(QtWidgets.QDialog):
         self.current_user = current_user
         self.setWindowTitle("Vendre un ticket")
         self.setMinimumWidth(480)
-        self.setStyleSheet("QDialog{background:#0d1117;color:#e6edf3;} QLabel{color:#8b949e;font-size:12px;}")
+        self.setStyleSheet("QDialog{background:#f5f7fa;color:#e6edf3;} QLabel{color:#8b949e;font-size:12px;}")
         self._setup_ui()
 
     def _setup_ui(self):
@@ -265,7 +264,6 @@ class TicketFormDialog(QtWidgets.QDialog):
         dlg = ClientQuickAdd(self)
         if dlg.exec():
             self._load_clients()
-            # Select newly added
             self.client_cb.setCurrentIndex(self.client_cb.count() - 1)
 
     def _save(self):
@@ -288,7 +286,7 @@ class ClientQuickAdd(QtWidgets.QDialog):
     def __init__(self, parent):
         super().__init__(parent)
         self.setWindowTitle("Nouveau client")
-        self.setStyleSheet("QDialog{background:#0d1117;color:#e6edf3;} QLabel{color:#8b949e;}")
+        self.setStyleSheet("QDialog{background:#f5f7fa;color:#e6edf3;} QLabel{color:#8b949e;}")
         layout = QtWidgets.QFormLayout(self)
         layout.setContentsMargins(24, 24, 24, 24)
         layout.setSpacing(12)

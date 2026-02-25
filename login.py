@@ -22,7 +22,6 @@ class LoginWindow(QtWidgets.QWidget):
         layout.setContentsMargins(50, 60, 50, 60)
         layout.setSpacing(0)
 
-        # Logo / title
         icon_lbl = QtWidgets.QLabel("🚌")
         icon_lbl.setAlignment(QtCore.Qt.AlignCenter)
         icon_lbl.setStyleSheet("font-size: 52px; margin-bottom: 8px;")
@@ -38,7 +37,6 @@ class LoginWindow(QtWidgets.QWidget):
         sub.setStyleSheet("font-size: 12px; color: #8b949e; margin-bottom: 36px;")
         layout.addWidget(sub)
 
-        # Form card
         card = QtWidgets.QFrame()
         card.setStyleSheet("""
             QFrame {
@@ -90,7 +88,6 @@ class LoginWindow(QtWidgets.QWidget):
         hint.setStyleSheet("color: #484f58; font-size: 11px; margin-top: 16px;")
         layout.addWidget(hint)
 
-        # Enter key
         self.field_pw.returnPressed.connect(self._do_login)
         self.field_id.returnPressed.connect(self._do_login)
 

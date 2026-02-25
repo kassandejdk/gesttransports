@@ -2,7 +2,6 @@ from PySide6 import QtWidgets, QtCore
 from database import get_connection
 from styles import primary_btn, section_title, make_table
 
-# ======================= CHAUFFEURS =======================
 
 class ChauffeursPage(QtWidgets.QWidget):
     def __init__(self, current_user):
@@ -132,7 +131,6 @@ class ChauffeurFormDialog(QtWidgets.QDialog):
             conn.close(); QtWidgets.QMessageBox.warning(self, "Erreur", str(e))
 
 
-# ======================= VEHICULES =======================
 
 class VehiculesPage(QtWidgets.QWidget):
     def __init__(self, current_user):

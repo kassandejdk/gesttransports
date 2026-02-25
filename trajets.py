@@ -113,20 +113,20 @@ class TrajetFormDialog(QtWidgets.QDialog):
         self.vd_cb = QtWidgets.QComboBox()
         self.va_cb = QtWidgets.QComboBox()
 
-        # Button to add new city inline
+        # ajouter une ville directement depuis le formulaire de trajet
         vd_row = QtWidgets.QHBoxLayout()
         vd_row.addWidget(self.vd_cb)
         btn_vd = QtWidgets.QPushButton("+")
-        btn_vd.setFixedWidth(30)
-        btn_vd.setStyleSheet("background:#21262d;color:#e6edf3;border:none;border-radius:4px;")
+        btn_vd.setFixedWidth(50)
+        btn_vd.setStyleSheet("background:#82a2f5;color:#e6edf3;border:none;border-radius:4px;")
         btn_vd.clicked.connect(lambda: self._add_ville(self.vd_cb))
         vd_row.addWidget(btn_vd)
 
         va_row = QtWidgets.QHBoxLayout()
         va_row.addWidget(self.va_cb)
         btn_va = QtWidgets.QPushButton("+")
-        btn_va.setFixedWidth(30)
-        btn_va.setStyleSheet("background:#21262d;color:#e6edf3;border:none;border-radius:4px;")
+        btn_va.setFixedWidth(50)
+        btn_va.setStyleSheet("background:#82a2f5;color:#e6edf3;border:none;border-radius:4px;")
         btn_va.clicked.connect(lambda: self._add_ville(self.va_cb))
         va_row.addWidget(btn_va)
 

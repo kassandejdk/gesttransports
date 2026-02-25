@@ -1,7 +1,6 @@
 
 import sys
 import os
-# Ensure we run from the project directory
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from PySide6 import QtWidgets, QtGui

@@ -14,7 +14,6 @@ class UsersPage(QtWidgets.QWidget):
         layout.setContentsMargins(30, 30, 30, 30)
         layout.setSpacing(20)
 
-        # Header
         hdr = QtWidgets.QHBoxLayout()
         hdr.addWidget(section_title("👥 Utilisateurs"))
         hdr.addStretch()
@@ -23,7 +22,6 @@ class UsersPage(QtWidgets.QWidget):
         hdr.addWidget(btn_add)
         layout.addLayout(hdr)
 
-        # Search bar
         search_layout = QtWidgets.QHBoxLayout()
         self.search_input = QtWidgets.QLineEdit()
         self.search_input.setPlaceholderText("🔍 Rechercher par nom, prénom, identifiant...")
@@ -31,7 +29,6 @@ class UsersPage(QtWidgets.QWidget):
         search_layout.addWidget(self.search_input)
         layout.addLayout(search_layout)
 
-        # Table
         self.table = make_table(["ID", "Nom", "Prénom", "Identifiant", "Genre", "Téléphone", "Rôle", "Actions"])
         layout.addWidget(self.table)
 
@@ -55,7 +52,6 @@ class UsersPage(QtWidgets.QWidget):
         for i, row in enumerate(rows):
             for j, val in enumerate(row):
                 self.table.setItem(i, j, QtWidgets.QTableWidgetItem(str(val) if val else ""))
-            # Actions
             action_widget = QtWidgets.QWidget()
             action_layout = QtWidgets.QHBoxLayout(action_widget)
             action_layout.setContentsMargins(4, 2, 4, 2)
@@ -124,7 +120,6 @@ class UserFormDialog(QtWidgets.QDialog):
         self.role_cb = QtWidgets.QComboBox()
         self.societe_cb = QtWidgets.QComboBox()
 
-        # Load roles
         conn = get_connection()
         self._roles = [dict(r) for r in conn.execute("SELECT id, nom FROM role").fetchall()]
         self._societes = [dict(s) for s in conn.execute("SELECT id, nom FROM societe").fetchall()]

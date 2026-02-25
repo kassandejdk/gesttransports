@@ -108,7 +108,7 @@ def init_db():
         );
     """)
 
-    # Seed default role and admin if not exists
+    # ici j'ai mis deux roles par defaut admin et agent
     c.execute("SELECT COUNT(*) FROM role")
     if c.fetchone()[0] == 0:
         c.execute("INSERT INTO role (nom, description) VALUES ('Admin', 'Administrateur système')")

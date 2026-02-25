@@ -2,7 +2,6 @@ from PySide6 import QtWidgets
 from database import get_connection
 from styles import primary_btn, section_title, make_table
 
-# ======================= CLIENTS =======================
 
 class ClientsPage(QtWidgets.QWidget):
     def __init__(self, current_user):
@@ -117,7 +116,6 @@ class ClientFormDialog(QtWidgets.QDialog):
             conn.close(); QtWidgets.QMessageBox.warning(self, "Erreur", str(e))
 
 
-# ======================= SOCIETE =======================
 
 class SocietePage(QtWidgets.QWidget):
     def __init__(self, current_user):
